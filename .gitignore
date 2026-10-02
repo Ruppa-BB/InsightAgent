@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+dist/
+data/generated/*
+!data/generated/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+*.xlsx
+*.xls
+*.zip
