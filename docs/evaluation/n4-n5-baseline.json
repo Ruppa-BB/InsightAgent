@@ -1,0 +1,1584 @@
+{
+  "quality": {
+    "source": "Online Retail II / PostgreSQL",
+    "unit": "GBP",
+    "checked_at": "2026-10-03T06:39:28.909961+00:00",
+    "period": {
+      "start_date": "2009-12-01",
+      "end_date": "2012-01-01"
+    },
+    "current": {
+      "summary": {
+        "details": 805620,
+        "orders": 36975,
+        "start_date": "2009-12-01",
+        "last_date": "2011-12-09",
+        "sales_amount": "17743429.16"
+      },
+      "rules": [
+        {
+          "rule": "null_required",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "invalid_numeric",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "null_confirmed_date",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "invalid_date",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "duplicate_order_lines",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "duplicate_order_numbers",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "orphan_detail_context",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "blank_dimension_codes",
+          "count": 0,
+          "status": "passed"
+        }
+      ],
+      "blocking": false,
+      "data_version": "d30947b545080e20c19823bf27976f804a94fc0d50db38330bf2a92a7a34a00d",
+      "version_note": "汇总与质量统计指纹，不是逐行内容哈希；固定本地样本用于复现。",
+      "type_check": {
+        "status": "database_typed",
+        "note": "PostgreSQL列类型约束存储值；不能据此证明原始文件没有类型错误。"
+      }
+    },
+    "months": [
+      {
+        "month": "2009-12-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 21,
+        "detail_count": 30761,
+        "sales_amount": "686654.16",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-01-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 24,
+        "detail_count": 21778,
+        "sales_amount": "557319.06",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-02-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 24,
+        "detail_count": 23369,
+        "sales_amount": "506371.06",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-03-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 27,
+        "detail_count": 32302,
+        "sales_amount": "699608.99",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-04-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 23,
+        "detail_count": 27238,
+        "sales_amount": "594609.19",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-05-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 24,
+        "detail_count": 28644,
+        "sales_amount": "599985.79",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-06-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 31191,
+        "sales_amount": "639066.58",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-07-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 27033,
+        "sales_amount": "591636.74",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-08-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 26393,
+        "sales_amount": "604242.65",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-09-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 34602,
+        "sales_amount": "831615.00",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-10-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 49563,
+        "sales_amount": "1036680.00",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-11-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 60316,
+        "sales_amount": "1172336.04",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2010-12-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 20,
+        "detail_count": 40665,
+        "sales_amount": "884591.89",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-01-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 24,
+        "detail_count": 21232,
+        "sales_amount": "569445.04",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-02-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 24,
+        "detail_count": 19928,
+        "sales_amount": "447137.35",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-03-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 27,
+        "detail_count": 27177,
+        "sales_amount": "595500.76",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-04-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 21,
+        "detail_count": 22644,
+        "sales_amount": "469200.36",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-05-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 25,
+        "detail_count": 28322,
+        "sales_amount": "678594.56",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-06-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 27185,
+        "sales_amount": "661213.69",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-07-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 26827,
+        "sales_amount": "600091.01",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-08-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 27013,
+        "sales_amount": "645343.90",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-09-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 40030,
+        "sales_amount": "952838.38",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-10-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 49557,
+        "sales_amount": "1039318.79",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-11-01",
+        "coverage_status": "within_bounds",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 26,
+        "detail_count": 64545,
+        "sales_amount": "1161817.38",
+        "eligible_for_detection": true,
+        "missing_rate": null
+      },
+      {
+        "month": "2011-12-01",
+        "coverage_status": "partial_or_outside",
+        "has_records": true,
+        "empty": false,
+        "observation_days": 8,
+        "detail_count": 17305,
+        "sales_amount": "518210.79",
+        "eligible_for_detection": false,
+        "missing_rate": null
+      }
+    ],
+    "historical_cleaning": {
+      "status": "summary_matches",
+      "counts": {
+        "raw_rows": 1067371,
+        "clean_rows": 805620,
+        "cancelled_rows": 19494,
+        "invalid_rows": 261751,
+        "orders": 36975,
+        "customers": 5881,
+        "products": 4631,
+        "regions": 41
+      },
+      "reported_sales_amount": "17743429.159999996",
+      "report_sha256": "29f9d2934622dc842f0f501178a63b2cc60a0a492be45770669af0ccbe0e932f",
+      "note": "历史清洗排除数；取消记录已包含在invalid_rows中，不能相加。汇总匹配不能证明原始文件逐行一致，也不能推算月度缺失率。"
+    },
+    "warnings": [
+      "没有交易的日期不等于数据缺失；缺失率未知，不用“有记录天数/自然日”计算缺失率。",
+      "覆盖边界完整只表示整个日历月在样本范围内，不证明逐日数据质量完整。"
+    ],
+    "sql": "SELECT date_trunc('month',o.confirmed_date)::date AS month,\n        COUNT(DISTINCT o.confirmed_date) AS observation_days,COUNT(*) AS detail_count,\n        SUM(d.sales_amount) AS sales_amount FROM fact_sales_order o\n        JOIN fact_sales_detail d ON d.order_id=o.order_id WHERE o.order_status='completed'\n        AND o.confirmed_date>=:start_date AND o.confirmed_date<:end_date\n        GROUP BY month ORDER BY month",
+    "parameters": {
+      "start_date": "2009-12-01",
+      "end_date": "2012-01-01"
+    }
+  },
+  "anomalies": {
+    "source": "Online Retail II / PostgreSQL",
+    "metric_code": "sales_amount",
+    "unit": "GBP",
+    "checked_at": "2026-10-03T06:39:29.533373+00:00",
+    "request": {
+      "start_date": "2010-01-01",
+      "end_date": "2012-01-01",
+      "filters": {
+        "country": null,
+        "customer_code": null,
+        "product_code": null
+      },
+      "mom_drop_threshold": 0.2,
+      "moving_average_threshold": 0.2,
+      "moving_average_window": 3
+    },
+    "data_version": "44925d7c5384be1b2d5d7eefa3ceeced32ef47fd6426e06bc764922032b53402",
+    "current_quality": {
+      "summary": {
+        "details": 805620,
+        "orders": 36975,
+        "start_date": "2009-12-01",
+        "last_date": "2011-12-09",
+        "sales_amount": "17743429.16"
+      },
+      "rules": [
+        {
+          "rule": "null_required",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "invalid_numeric",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "null_confirmed_date",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "invalid_date",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "duplicate_order_lines",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "duplicate_order_numbers",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "orphan_detail_context",
+          "count": 0,
+          "status": "passed"
+        },
+        {
+          "rule": "blank_dimension_codes",
+          "count": 0,
+          "status": "passed"
+        }
+      ],
+      "blocking": false,
+      "data_version": "d30947b545080e20c19823bf27976f804a94fc0d50db38330bf2a92a7a34a00d",
+      "version_note": "汇总与质量统计指纹，不是逐行内容哈希；固定本地样本用于复现。",
+      "type_check": {
+        "status": "database_typed",
+        "note": "PostgreSQL列类型约束存储值；不能据此证明原始文件没有类型错误。"
+      }
+    },
+    "rows": [
+      {
+        "month": "2010-01-01",
+        "sales_amount": "557319.06",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "686654.16",
+            "baseline_months": [
+              "2009-12-01"
+            ],
+            "observed_value": "557319.06",
+            "change_ratio": "-0.1883555180092406343245630377",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "2dd8b01177b5d88d17babd55"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "unavailable",
+            "reason": "insufficient_history",
+            "baseline": null,
+            "baseline_months": [
+              "2009-10-01",
+              "2009-11-01",
+              "2009-12-01"
+            ],
+            "window": 3,
+            "observed_value": "557319.06",
+            "change_ratio": null,
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "819358c71a0e45e0442875d2"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-02-01",
+        "sales_amount": "506371.06",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "557319.06",
+            "baseline_months": [
+              "2010-01-01"
+            ],
+            "observed_value": "506371.06",
+            "change_ratio": "-0.09141621677177163113710842762",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "a931009f3f5b13b63cd2591b"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "unavailable",
+            "reason": "insufficient_history",
+            "baseline": null,
+            "baseline_months": [
+              "2009-11-01",
+              "2009-12-01",
+              "2010-01-01"
+            ],
+            "window": 3,
+            "observed_value": "506371.06",
+            "change_ratio": null,
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "d828cd7324407cae262fc951"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-03-01",
+        "sales_amount": "699608.99",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "506371.06",
+            "baseline_months": [
+              "2010-02-01"
+            ],
+            "observed_value": "699608.99",
+            "change_ratio": "0.3816132975687828605370930953",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "e9d82e35212122f2defaa144"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "583448.0933333333333333333333",
+            "baseline_months": [
+              "2009-12-01",
+              "2010-01-01",
+              "2010-02-01"
+            ],
+            "window": 3,
+            "observed_value": "699608.99",
+            "change_ratio": "0.1990937977070430966872414381",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "f2d5ab1f8e89a27696973cb1"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-04-01",
+        "sales_amount": "594609.19",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "699608.99",
+            "baseline_months": [
+              "2010-03-01"
+            ],
+            "observed_value": "594609.19",
+            "change_ratio": "-0.1500835488120299883510644996",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "4716fa6e0f927b1c840ebd8b"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "587766.37",
+            "baseline_months": [
+              "2010-01-01",
+              "2010-02-01",
+              "2010-03-01"
+            ],
+            "window": 3,
+            "observed_value": "594609.19",
+            "change_ratio": "0.01164207472435008488151508226",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "f4cdd67d6c8f7392df7628bc"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-05-01",
+        "sales_amount": "599985.79",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "594609.19",
+            "baseline_months": [
+              "2010-04-01"
+            ],
+            "observed_value": "599985.79",
+            "change_ratio": "0.009042241678101207954757645101",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "af4c927efa75c5d243314408"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "600196.4133333333333333333333",
+            "baseline_months": [
+              "2010-02-01",
+              "2010-03-01",
+              "2010-04-01"
+            ],
+            "window": 3,
+            "observed_value": "599985.79",
+            "change_ratio": "-0.0003509240119639946310020157068",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "398f92f6d20f4319e8f47ba7"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-06-01",
+        "sales_amount": "639066.58",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "599985.79",
+            "baseline_months": [
+              "2010-05-01"
+            ],
+            "observed_value": "639066.58",
+            "change_ratio": "0.06513619264216240854637574000",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "d12f9d021f6dd9f447e9046d"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "631401.3233333333333333333333",
+            "baseline_months": [
+              "2010-03-01",
+              "2010-04-01",
+              "2010-05-01"
+            ],
+            "window": 3,
+            "observed_value": "639066.58",
+            "change_ratio": "0.01214007063874963792838001501",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "8a17d6f42ba48fe6b9ebf45f"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-07-01",
+        "sales_amount": "591636.74",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "639066.58",
+            "baseline_months": [
+              "2010-06-01"
+            ],
+            "observed_value": "591636.74",
+            "change_ratio": "-0.07421736871297510190565746686",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "0466ffd33a58c9ea2d4a1c3f"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "611220.52",
+            "baseline_months": [
+              "2010-04-01",
+              "2010-05-01",
+              "2010-06-01"
+            ],
+            "window": 3,
+            "observed_value": "591636.74",
+            "change_ratio": "-0.03204044916554830325395489013",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "efd50185455551814e54d4fd"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-08-01",
+        "sales_amount": "604242.65",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "591636.74",
+            "baseline_months": [
+              "2010-07-01"
+            ],
+            "observed_value": "604242.65",
+            "change_ratio": "0.02130684108630576255287999863",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "8e97b1608aa530933f29cec8"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "610229.7033333333333333333333",
+            "baseline_months": [
+              "2010-05-01",
+              "2010-06-01",
+              "2010-07-01"
+            ],
+            "window": 3,
+            "observed_value": "604242.65",
+            "change_ratio": "-0.009811147016655383939002073324",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "589c66ce955d7657e2a86c18"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2010-09-01",
+        "sales_amount": "831615.00",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "604242.65",
+            "baseline_months": [
+              "2010-08-01"
+            ],
+            "observed_value": "831615.00",
+            "change_ratio": "0.3762931166808566061995127289",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "24ac3cc13d18ac29494bd072"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "611648.6566666666666666666667",
+            "baseline_months": [
+              "2010-06-01",
+              "2010-07-01",
+              "2010-08-01"
+            ],
+            "window": 3,
+            "observed_value": "831615.00",
+            "change_ratio": "0.3596285889551287441994817972",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "a4ca86cc0d5f5208a4a9d3cc"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2010-10-01",
+        "sales_amount": "1036680.00",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "831615.00",
+            "baseline_months": [
+              "2010-09-01"
+            ],
+            "observed_value": "1036680.00",
+            "change_ratio": "0.2465864612831658880611821576",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "0a42aabeb17d1b4be721f680"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "675831.4633333333333333333333",
+            "baseline_months": [
+              "2010-07-01",
+              "2010-08-01",
+              "2010-09-01"
+            ],
+            "window": 3,
+            "observed_value": "1036680.00",
+            "change_ratio": "0.5339327276757594382295676784",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "4b396558c5d39a921c481e4e"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2010-11-01",
+        "sales_amount": "1172336.04",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "1036680.00",
+            "baseline_months": [
+              "2010-10-01"
+            ],
+            "observed_value": "1172336.04",
+            "change_ratio": "0.1308562333603426322491029054",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "7002857ef4e426a66ce223f3"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "824179.2166666666666666666667",
+            "baseline_months": [
+              "2010-08-01",
+              "2010-09-01",
+              "2010-10-01"
+            ],
+            "window": 3,
+            "observed_value": "1172336.04",
+            "change_ratio": "0.4224285401680334372259205031",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "117efd4411bc1918526f45e4"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2010-12-01",
+        "sales_amount": "884591.89",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "1172336.04",
+            "baseline_months": [
+              "2010-11-01"
+            ],
+            "observed_value": "884591.89",
+            "change_ratio": "-0.2454451114545621236723218029",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "0bccd4891c34e3be8cb39052"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "1013543.68",
+            "baseline_months": [
+              "2010-09-01",
+              "2010-10-01",
+              "2010-11-01"
+            ],
+            "window": 3,
+            "observed_value": "884591.89",
+            "change_ratio": "-0.1272286459326548215465168704",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "4e21d42e62b4d34b84764521"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-01-01",
+        "sales_amount": "569445.04",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "884591.89",
+            "baseline_months": [
+              "2010-12-01"
+            ],
+            "observed_value": "569445.04",
+            "change_ratio": "-0.3562624228897237572458413563",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "9274632b5c8bc4508e24253d"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "1031202.643333333333333333333",
+            "baseline_months": [
+              "2010-10-01",
+              "2010-11-01",
+              "2010-12-01"
+            ],
+            "window": 3,
+            "observed_value": "569445.04",
+            "change_ratio": "-0.4477855117212606834764610910",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "55316a34fca2b449680a6647"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-02-01",
+        "sales_amount": "447137.35",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "569445.04",
+            "baseline_months": [
+              "2011-01-01"
+            ],
+            "observed_value": "447137.35",
+            "change_ratio": "-0.2147840114649167898626353827",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "db24b076fef9e43c24841087"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "875457.6566666666666666666667",
+            "baseline_months": [
+              "2010-11-01",
+              "2010-12-01",
+              "2011-01-01"
+            ],
+            "window": 3,
+            "observed_value": "447137.35",
+            "change_ratio": "-0.4892530248664568003073836082",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "2bd92546b698d6ea2fc3c84b"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-03-01",
+        "sales_amount": "595500.76",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "447137.35",
+            "baseline_months": [
+              "2011-02-01"
+            ],
+            "observed_value": "595500.76",
+            "change_ratio": "0.3318072399901283129221926998",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "4627ca700b5e9bc0f6a2a13b"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "633724.76",
+            "baseline_months": [
+              "2010-12-01",
+              "2011-01-01",
+              "2011-02-01"
+            ],
+            "window": 3,
+            "observed_value": "595500.76",
+            "change_ratio": "-0.06031640613189864950203302771",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "bef7e0222e19b26f6acc5bd2"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2011-04-01",
+        "sales_amount": "469200.36",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "595500.76",
+            "baseline_months": [
+              "2011-03-01"
+            ],
+            "observed_value": "469200.36",
+            "change_ratio": "-0.2120910811264119965186946193",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "d3fae3f204d33882912f21f9"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "537361.05",
+            "baseline_months": [
+              "2011-01-01",
+              "2011-02-01",
+              "2011-03-01"
+            ],
+            "window": 3,
+            "observed_value": "469200.36",
+            "change_ratio": "-0.1268433765342687193275359277",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "2f6511f28232720ad35677de"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-05-01",
+        "sales_amount": "678594.56",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "469200.36",
+            "baseline_months": [
+              "2011-04-01"
+            ],
+            "observed_value": "678594.56",
+            "change_ratio": "0.4462788562225314575632465414",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "da831ec872f309c0d16f8824"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "503946.1566666666666666666667",
+            "baseline_months": [
+              "2011-02-01",
+              "2011-03-01",
+              "2011-04-01"
+            ],
+            "window": 3,
+            "observed_value": "678594.56",
+            "change_ratio": "0.3465616336644747504010795544",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "2f737a5cb7280a2548c957ea"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-06-01",
+        "sales_amount": "661213.69",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "678594.56",
+            "baseline_months": [
+              "2011-05-01"
+            ],
+            "observed_value": "661213.69",
+            "change_ratio": "-0.02561304057609893011815479334",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "f30c7b4e9767116b7369fe8d"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "581098.56",
+            "baseline_months": [
+              "2011-03-01",
+              "2011-04-01",
+              "2011-05-01"
+            ],
+            "window": 3,
+            "observed_value": "661213.69",
+            "change_ratio": "0.1378684022207867801290025568",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "1d0187acd4077d27b9b64a50"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2011-07-01",
+        "sales_amount": "600091.01",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "661213.69",
+            "baseline_months": [
+              "2011-06-01"
+            ],
+            "observed_value": "600091.01",
+            "change_ratio": "-0.09244013081459338810725470611",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "e2eef9b20b9703ec86bd13c3"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "603002.87",
+            "baseline_months": [
+              "2011-04-01",
+              "2011-05-01",
+              "2011-06-01"
+            ],
+            "window": 3,
+            "observed_value": "600091.01",
+            "change_ratio": "-0.004828932240405422945996923696",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "4e072e4c05463fce7c61d35c"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2011-08-01",
+        "sales_amount": "645343.90",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "600091.01",
+            "baseline_months": [
+              "2011-07-01"
+            ],
+            "observed_value": "645343.90",
+            "change_ratio": "0.07541004488635815424063759929",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "6dae37df774194c19277f5fd"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "normal",
+            "reason": null,
+            "baseline": "646633.0866666666666666666667",
+            "baseline_months": [
+              "2011-05-01",
+              "2011-06-01",
+              "2011-07-01"
+            ],
+            "window": 3,
+            "observed_value": "645343.90",
+            "change_ratio": "-0.001993691156931520248118451316",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "4e9c434910079c11279252be"
+          }
+        ],
+        "triggered": false
+      },
+      {
+        "month": "2011-09-01",
+        "sales_amount": "952838.38",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "645343.90",
+            "baseline_months": [
+              "2011-08-01"
+            ],
+            "observed_value": "952838.38",
+            "change_ratio": "0.4764815782716780928742024214",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "105ec1bef4d773ce772eeaeb"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "635549.5333333333333333333333",
+            "baseline_months": [
+              "2011-06-01",
+              "2011-07-01",
+              "2011-08-01"
+            ],
+            "window": 3,
+            "observed_value": "952838.38",
+            "change_ratio": "0.4992354333147702203751650934",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "3375cda4490f2f50537aeee0"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-10-01",
+        "sales_amount": "1039318.79",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "952838.38",
+            "baseline_months": [
+              "2011-09-01"
+            ],
+            "observed_value": "1039318.79",
+            "change_ratio": "0.09076083816019249770354548481",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "49f6322c6e56ef99d4b9361f"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "732757.7633333333333333333333",
+            "baseline_months": [
+              "2011-07-01",
+              "2011-08-01",
+              "2011-09-01"
+            ],
+            "window": 3,
+            "observed_value": "1039318.79",
+            "change_ratio": "0.4183661258969306768950461115",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "177f6b2c4156651ff7040641"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-11-01",
+        "sales_amount": "1161817.38",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "normal",
+            "reason": null,
+            "baseline": "1039318.79",
+            "baseline_months": [
+              "2011-10-01"
+            ],
+            "observed_value": "1161817.38",
+            "change_ratio": "0.1178643080242973380669852029",
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "6991df9557b10ce3f36e97b2"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "triggered",
+            "reason": null,
+            "baseline": "879167.0233333333333333333333",
+            "baseline_months": [
+              "2011-08-01",
+              "2011-09-01",
+              "2011-10-01"
+            ],
+            "window": 3,
+            "observed_value": "1161817.38",
+            "change_ratio": "0.3214979055913710017945130161",
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "c52aecb487756d71c27fa8c2"
+          }
+        ],
+        "triggered": true
+      },
+      {
+        "month": "2011-12-01",
+        "sales_amount": "518210.79",
+        "checks": [
+          {
+            "method": "mom_drop",
+            "status": "unavailable",
+            "reason": "incomplete_period",
+            "baseline": "1161817.38",
+            "baseline_months": [
+              "2011-11-01"
+            ],
+            "observed_value": "518210.79",
+            "change_ratio": null,
+            "threshold": "0.2",
+            "operator": "change_ratio < -threshold",
+            "event_id": "f5154672ba4d3dd75b4a1ea4"
+          },
+          {
+            "method": "moving_average_deviation",
+            "status": "unavailable",
+            "reason": "incomplete_period",
+            "baseline": null,
+            "baseline_months": [
+              "2011-09-01",
+              "2011-10-01",
+              "2011-11-01"
+            ],
+            "window": 3,
+            "observed_value": "518210.79",
+            "change_ratio": null,
+            "threshold": "0.2",
+            "operator": "abs(change_ratio) > threshold",
+            "event_id": "d6d1ee5aebb6003bc923a3ce"
+          }
+        ],
+        "triggered": false
+      }
+    ],
+    "tools": [
+      {
+        "metric_code": "sales_amount",
+        "unit": "GBP",
+        "request": {
+          "start_date": "2010-01-01",
+          "end_date": "2012-01-01",
+          "metric_code": "sales_amount",
+          "group_by": "month",
+          "limit": 500,
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "rows": [
+          {
+            "dimension_key": "2010-01-01",
+            "dimension": "2010-01-01",
+            "value": "557319.06",
+            "observation_count": 21778
+          },
+          {
+            "dimension_key": "2010-02-01",
+            "dimension": "2010-02-01",
+            "value": "506371.06",
+            "observation_count": 23369
+          },
+          {
+            "dimension_key": "2010-03-01",
+            "dimension": "2010-03-01",
+            "value": "699608.99",
+            "observation_count": 32302
+          },
+          {
+            "dimension_key": "2010-04-01",
+            "dimension": "2010-04-01",
+            "value": "594609.19",
+            "observation_count": 27238
+          },
+          {
+            "dimension_key": "2010-05-01",
+            "dimension": "2010-05-01",
+            "value": "599985.79",
+            "observation_count": 28644
+          },
+          {
+            "dimension_key": "2010-06-01",
+            "dimension": "2010-06-01",
+            "value": "639066.58",
+            "observation_count": 31191
+          },
+          {
+            "dimension_key": "2010-07-01",
+            "dimension": "2010-07-01",
+            "value": "591636.74",
+            "observation_count": 27033
+          },
+          {
+            "dimension_key": "2010-08-01",
+            "dimension": "2010-08-01",
+            "value": "604242.65",
+            "observation_count": 26393
+          },
+          {
+            "dimension_key": "2010-09-01",
+            "dimension": "2010-09-01",
+            "value": "831615.00",
+            "observation_count": 34602
+          },
+          {
+            "dimension_key": "2010-10-01",
+            "dimension": "2010-10-01",
+            "value": "1036680.00",
+            "observation_count": 49563
+          },
+          {
+            "dimension_key": "2010-11-01",
+            "dimension": "2010-11-01",
+            "value": "1172336.04",
+            "observation_count": 60316
+          },
+          {
+            "dimension_key": "2010-12-01",
+            "dimension": "2010-12-01",
+            "value": "884591.89",
+            "observation_count": 40665
+          },
+          {
+            "dimension_key": "2011-01-01",
+            "dimension": "2011-01-01",
+            "value": "569445.04",
+            "observation_count": 21232
+          },
+          {
+            "dimension_key": "2011-02-01",
+            "dimension": "2011-02-01",
+            "value": "447137.35",
+            "observation_count": 19928
+          },
+          {
+            "dimension_key": "2011-03-01",
+            "dimension": "2011-03-01",
+            "value": "595500.76",
+            "observation_count": 27177
+          },
+          {
+            "dimension_key": "2011-04-01",
+            "dimension": "2011-04-01",
+            "value": "469200.36",
+            "observation_count": 22644
+          },
+          {
+            "dimension_key": "2011-05-01",
+            "dimension": "2011-05-01",
+            "value": "678594.56",
+            "observation_count": 28322
+          },
+          {
+            "dimension_key": "2011-06-01",
+            "dimension": "2011-06-01",
+            "value": "661213.69",
+            "observation_count": 27185
+          },
+          {
+            "dimension_key": "2011-07-01",
+            "dimension": "2011-07-01",
+            "value": "600091.01",
+            "observation_count": 26827
+          },
+          {
+            "dimension_key": "2011-08-01",
+            "dimension": "2011-08-01",
+            "value": "645343.90",
+            "observation_count": 27013
+          },
+          {
+            "dimension_key": "2011-09-01",
+            "dimension": "2011-09-01",
+            "value": "952838.38",
+            "observation_count": 40030
+          },
+          {
+            "dimension_key": "2011-10-01",
+            "dimension": "2011-10-01",
+            "value": "1039318.79",
+            "observation_count": 49557
+          },
+          {
+            "dimension_key": "2011-11-01",
+            "dimension": "2011-11-01",
+            "value": "1161817.38",
+            "observation_count": 64545
+          },
+          {
+            "dimension_key": "2011-12-01",
+            "dimension": "2011-12-01",
+            "value": "518210.79",
+            "observation_count": 17305
+          }
+        ],
+        "row_count": 24,
+        "truncated": false,
+        "empty": false,
+        "sql": "SELECT date_trunc('month', o.confirmed_date)::date AS dimension_key, date_trunc('month', o.confirmed_date)::date AS dimension,\n        COALESCE(SUM(d.sales_amount), 0) AS value, COUNT(*) AS observation_count\n        FROM fact_sales_order AS o\nJOIN fact_sales_detail AS d ON d.order_id = o.order_id\nJOIN dim_customer AS c ON c.customer_id = o.customer_id\nJOIN dim_product AS p ON p.product_id = d.product_id\nJOIN dim_region AS r ON r.region_id = o.region_id WHERE o.order_status = 'completed' AND o.confirmed_date >= :start_date AND o.confirmed_date < :end_date\n        GROUP BY date_trunc('month', o.confirmed_date)::date, date_trunc('month', o.confirmed_date)::date\n        ORDER BY date_trunc('month', o.confirmed_date)::date LIMIT :limit",
+        "parameters": {
+          "start_date": "2010-01-01",
+          "end_date": "2012-01-01",
+          "limit": 501
+        },
+        "source": "PostgreSQL / Online Retail II",
+        "warnings": []
+      },
+      {
+        "metric_code": "sales_amount",
+        "unit": "GBP",
+        "request": {
+          "start_date": "2009-10-01",
+          "end_date": "2010-01-01",
+          "metric_code": "sales_amount",
+          "group_by": "month",
+          "limit": 500,
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "rows": [
+          {
+            "dimension_key": "2009-12-01",
+            "dimension": "2009-12-01",
+            "value": "686654.16",
+            "observation_count": 30761
+          }
+        ],
+        "row_count": 1,
+        "truncated": false,
+        "empty": false,
+        "sql": "SELECT date_trunc('month', o.confirmed_date)::date AS dimension_key, date_trunc('month', o.confirmed_date)::date AS dimension,\n        COALESCE(SUM(d.sales_amount), 0) AS value, COUNT(*) AS observation_count\n        FROM fact_sales_order AS o\nJOIN fact_sales_detail AS d ON d.order_id = o.order_id\nJOIN dim_customer AS c ON c.customer_id = o.customer_id\nJOIN dim_product AS p ON p.product_id = d.product_id\nJOIN dim_region AS r ON r.region_id = o.region_id WHERE o.order_status = 'completed' AND o.confirmed_date >= :start_date AND o.confirmed_date < :end_date\n        GROUP BY date_trunc('month', o.confirmed_date)::date, date_trunc('month', o.confirmed_date)::date\n        ORDER BY date_trunc('month', o.confirmed_date)::date LIMIT :limit",
+        "parameters": {
+          "start_date": "2009-10-01",
+          "end_date": "2010-01-01",
+          "limit": 501
+        },
+        "source": "PostgreSQL / Online Retail II",
+        "warnings": []
+      }
+    ],
+    "summary": {
+      "months": 24,
+      "triggered_months": 11,
+      "triggered_checks": 13,
+      "unavailable_checks": 4
+    },
+    "warnings": [
+      "检测结果是配置阈值下的变化提醒，不能证明业务原因。",
+      "移动平均只使用当前月之前连续的完整月份，不含未来数据；未做季节性调整。",
+      "覆盖范围完整不等于逐日数据完整；当前质量规则失败时暂停异常判断。",
+      "当前比较月度总额，未按月份天数计算日均值。"
+    ]
+  }
+}

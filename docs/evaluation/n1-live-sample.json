@@ -1,0 +1,271 @@
+{
+  "suite_version": "retail-n1-v1",
+  "suite_sha256": "882533d05869a51a0fc6eb6193599b6e463a51dbe7a545a837466f6f951fc339",
+  "started_at": "2026-10-02T16:23:01.953916+00:00",
+  "mode": "live",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "prompt_version": "retail-intent-v2",
+  "selected_ids": [
+    "Q13",
+    "Q20",
+    "Q27"
+  ],
+  "data_before": {
+    "summary": {
+      "details": 805620,
+      "orders": 36975,
+      "start_date": "2009-12-01",
+      "end_date": "2011-12-09",
+      "sales_amount": "17743429.16"
+    },
+    "summary_sha256": "bc6f76cf0d8c77399e3e626d5ae0e53589cff02b2797fb0d33ccde35e224e1b6",
+    "limitation": "Summary fingerprint is not a full row-level content hash; use an unchanged local dataset for reproduction."
+  },
+  "data_after": {
+    "summary": {
+      "details": 805620,
+      "orders": 36975,
+      "start_date": "2009-12-01",
+      "end_date": "2011-12-09",
+      "sales_amount": "17743429.16"
+    },
+    "summary_sha256": "bc6f76cf0d8c77399e3e626d5ae0e53589cff02b2797fb0d33ccde35e224e1b6",
+    "limitation": "Summary fingerprint is not a full row-level content hash; use an unchanged local dataset for reproduction."
+  },
+  "parsing": [
+    {
+      "id": "Q13",
+      "category": "filter",
+      "question": "2011年1月英国的销售额是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": "United Kingdom"
+          }
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": "United Kingdom",
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {
+        "strategy": "model",
+        "model": "deepseek-flash",
+        "calls": 1,
+        "prompt_tokens": 454,
+        "completion_tokens": 67,
+        "total_tokens": 521,
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 198
+      }
+    },
+    {
+      "id": "Q20",
+      "category": "ambiguous_year",
+      "question": "2月销售额是多少",
+      "expected": {
+        "status": "needs_clarification"
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "needs_clarification",
+        "intent": null,
+        "message": "请指定要分析的年份。"
+      },
+      "usage": {
+        "strategy": "model",
+        "model": "deepseek-flash",
+        "calls": 1,
+        "prompt_tokens": 450,
+        "completion_tokens": 23,
+        "total_tokens": 473,
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 194
+      }
+    },
+    {
+      "id": "Q27",
+      "category": "english",
+      "question": "What was the sales revenue in January 2011?",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {
+        "strategy": "model",
+        "model": "deepseek-flash",
+        "calls": 1,
+        "prompt_tokens": 457,
+        "completion_tokens": 63,
+        "total_tokens": 520,
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 201
+      }
+    }
+  ],
+  "gold_plan_execution": [
+    {
+      "id": "Q13",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": "442190.06"
+          }
+        ],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": "United Kingdom",
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {
+        "first_value": "442190.06"
+      },
+      "answer": "按月份查询销售额，返回 1 组结果，单位 GBP。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "Q20",
+      "status": "not_applicable"
+    },
+    {
+      "id": "Q27",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": "569445.04"
+          }
+        ],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {
+        "first_value": "569445.04"
+      },
+      "answer": "按月份查询销售额，返回 1 组结果，单位 GBP。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。"
+      ],
+      "row_count": 1
+    }
+  ],
+  "parsing_summary": {
+    "total": 3,
+    "evaluated": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "not_applicable": 0,
+    "pass_rate": 1.0
+  },
+  "execution_summary": {
+    "total": 3,
+    "evaluated": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "not_applicable": 1,
+    "pass_rate": 1.0
+  },
+  "duration_seconds": 5.15,
+  "data_summary_unchanged": true,
+  "model_usage": {
+    "calls": 3,
+    "prompt_tokens": 1361,
+    "completion_tokens": 153,
+    "total_tokens": 1514
+  },
+  "interpretation": "Parsing and gold-plan execution are independent; gold-plan success is not end-to-end model accuracy. No live SQL is executed from a failed model plan."
+}

@@ -1,0 +1,754 @@
+{
+  "suite_version": "retail-n3-v1",
+  "suite_sha256": "2169a9f97e4a7f02d76a0ce1bcb28a1650d00249d0f354f7ef33de1fb02edba4",
+  "started_at": "2026-10-03T06:18:18.848899+00:00",
+  "mode": "offline",
+  "provider": "demo",
+  "model": null,
+  "prompt_version": "retail-intent-v3",
+  "selected_ids": [
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08"
+  ],
+  "data_before": {
+    "summary": {
+      "details": 805620,
+      "orders": 36975,
+      "start_date": "2009-12-01",
+      "end_date": "2011-12-09",
+      "sales_amount": "17743429.16"
+    },
+    "summary_sha256": "bc6f76cf0d8c77399e3e626d5ae0e53589cff02b2797fb0d33ccde35e224e1b6",
+    "limitation": "Summary fingerprint is not a full row-level content hash; use an unchanged local dataset for reproduction."
+  },
+  "data_after": {
+    "summary": {
+      "details": 805620,
+      "orders": 36975,
+      "start_date": "2009-12-01",
+      "end_date": "2011-12-09",
+      "sales_amount": "17743429.16"
+    },
+    "summary_sha256": "bc6f76cf0d8c77399e3e626d5ae0e53589cff02b2797fb0d33ccde35e224e1b6",
+    "limitation": "Summary fingerprint is not a full row-level content hash; use an unchanged local dataset for reproduction."
+  },
+  "parsing": [
+    {
+      "id": "M01",
+      "category": "metrics_n3",
+      "question": "2011年1月销量是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_quantity",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_quantity",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M02",
+      "category": "metrics_n3",
+      "question": "2011年1月客单价是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M03",
+      "category": "metrics_n3",
+      "question": "2011年1月加权平均售价是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_selling_price",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_selling_price",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M04",
+      "category": "metrics_n3",
+      "question": "2011年2月客单价比1月变化",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "compare",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-02-01",
+            "end_date": "2011-03-01"
+          },
+          "previous_period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "compare",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-02-01",
+            "end_date": "2011-03-01"
+          },
+          "previous_period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M05",
+      "category": "metrics_n3",
+      "question": "2011年1月销售额同比是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M06",
+      "category": "metrics_n3",
+      "question": "2010年1月销售额同比是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2010-01-01",
+            "end_date": "2010-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2010-01-01",
+            "end_date": "2010-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M07",
+      "category": "metrics_n3",
+      "question": "2011年12月销售额同比是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-12-01",
+            "end_date": "2012-01-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-12-01",
+            "end_date": "2012-01-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    },
+    {
+      "id": "M08",
+      "category": "metrics_n3",
+      "question": "2005年1月客单价是多少",
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2005-01-01",
+            "end_date": "2005-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "context": null,
+      "status": "passed",
+      "errors": [],
+      "observed": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2005-01-01",
+            "end_date": "2005-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {
+            "country": null,
+            "customer_code": null,
+            "product_code": null
+          }
+        },
+        "message": ""
+      },
+      "usage": {}
+    }
+  ],
+  "gold_plan_execution": [
+    {
+      "id": "M01",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": 349147
+          }
+        ],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.quantity),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "按月份查询销量，返回 1 组结果，单位 items。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M02",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": "576.9453292806484296"
+          }
+        ],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, SUM(line.sales_amount)/NULLIF(COUNT(DISTINCT header.order_id),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "按月份查询客单价，返回 1 组结果，单位 GBP/order。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M03",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": "1.6309607128229657"
+          }
+        ],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, SUM(line.sales_amount)/NULLIF(SUM(line.quantity),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "按月份查询加权平均售价，返回 1 组结果，单位 GBP/item。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M04",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "comparison": {
+          "previous": "576.9453292806484296",
+          "current": "448.0334168336673347",
+          "delta": "-128.9119124469810949",
+          "change_ratio": "-0.2234386967092914544710122189"
+        },
+        "evidence": [
+          {
+            "sql": "SELECT  SUM(line.sales_amount)/NULLIF(COUNT(DISTINCT header.order_id),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code))",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT  SUM(line.sales_amount)/NULLIF(COUNT(DISTINCT header.order_id),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code))",
+            "parameters": {
+              "start_date": "2011-02-01",
+              "end_date": "2011-03-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {
+        "attribution_dimensions": []
+      },
+      "answer": "客单价从 576.95 变为 448.03 GBP/order，减少 128.91，变化 -22.34%。",
+      "comparison": {
+        "previous": "576.9453292806484296",
+        "current": "448.0334168336673347",
+        "delta": "-128.9119124469810949",
+        "change_ratio": "-0.2234386967092914544710122189"
+      },
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。",
+        "两个期间天数不同，当前比较期间总量，没有做日均归一化。",
+        "当前仅销售额支持完整维度贡献分解；去重指标及平均值不能跨商品简单相加。"
+      ],
+      "row_count": 2
+    },
+    {
+      "id": "M05",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-01-01",
+            "value": "0.02175769836402149964151593882"
+          }
+        ],
+        "truncated": false,
+        "yoy_null_reasons": [
+          null
+        ],
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-01-01",
+              "end_date": "2011-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2010-01-01",
+              "end_date": "2010-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT MIN(confirmed_date) AS first,MAX(confirmed_date) AS last FROM fact_sales_order WHERE order_status='completed'",
+            "parameters": {}
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "销售额同比按本月与去年同月计算；表格保留完整月份、基期金额和不可计算原因。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。",
+        "仅比较完整日历月份；数据覆盖不足、缺月或去年同月为0时同比返回null。覆盖范围完整不代表逐日数据质量已验证。"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M06",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2010-01-01",
+            "value": null
+          }
+        ],
+        "truncated": false,
+        "yoy_null_reasons": [
+          "incomplete_period"
+        ],
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2010-01-01",
+              "end_date": "2010-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2009-01-01",
+              "end_date": "2009-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT MIN(confirmed_date) AS first,MAX(confirmed_date) AS last FROM fact_sales_order WHERE order_status='completed'",
+            "parameters": {}
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "销售额同比按本月与去年同月计算；表格保留完整月份、基期金额和不可计算原因。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。",
+        "仅比较完整日历月份；数据覆盖不足、缺月或去年同月为0时同比返回null。覆盖范围完整不代表逐日数据质量已验证。",
+        "部分月份同比不可计算：incomplete_period"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M07",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [
+          {
+            "dimension": "2011-12-01",
+            "value": null
+          }
+        ],
+        "truncated": false,
+        "yoy_null_reasons": [
+          "incomplete_period"
+        ],
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2011-12-01",
+              "end_date": "2012-01-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, COALESCE(SUM(line.sales_amount),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2010-12-01",
+              "end_date": "2011-01-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          },
+          {
+            "sql": "SELECT MIN(confirmed_date) AS first,MAX(confirmed_date) AS last FROM fact_sales_order WHERE order_status='completed'",
+            "parameters": {}
+          }
+        ]
+      },
+      "checks": {},
+      "answer": "销售额同比按本月与去年同月计算；表格保留完整月份、基期金额和不可计算原因。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。",
+        "2011-12-01 至 2012-01-01 超出数据实际覆盖范围，期间可能不完整。",
+        "仅比较完整日历月份；数据覆盖不足、缺月或去年同月为0时同比返回null。覆盖范围完整不代表逐日数据质量已验证。",
+        "部分月份同比不可计算：incomplete_period"
+      ],
+      "row_count": 1
+    },
+    {
+      "id": "M08",
+      "status": "passed",
+      "errors": [],
+      "reference": {
+        "rows": [],
+        "truncated": false,
+        "evidence": [
+          {
+            "sql": "SELECT date_trunc('month',header.confirmed_date)::date AS dimension, SUM(line.sales_amount)/NULLIF(COUNT(DISTINCT header.order_id),0) AS value FROM fact_sales_detail line JOIN fact_sales_order header\nON header.order_id=line.order_id WHERE header.order_status='completed'\nAND header.confirmed_date >= :start_date AND header.confirmed_date < :end_date\nAND (CAST(:country AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_region region\n    WHERE region.region_id=header.region_id AND region.region_name=:country))\nAND (CAST(:customer_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_customer customer\n    WHERE customer.customer_id=header.customer_id AND customer.customer_code=:customer_code))\nAND (CAST(:product_code AS text) IS NULL OR EXISTS (SELECT 1 FROM dim_product product\n    WHERE product.product_id=line.product_id AND product.product_code=:product_code)) GROUP BY date_trunc('month',header.confirmed_date)::date",
+            "parameters": {
+              "start_date": "2005-01-01",
+              "end_date": "2005-02-01",
+              "country": null,
+              "customer_code": null,
+              "product_code": null
+            }
+          }
+        ]
+      },
+      "checks": {
+        "row_count": 0,
+        "answer_contains": [
+          "没有匹配"
+        ]
+      },
+      "answer": "所选范围和筛选条件没有匹配的销售记录，无法据此判断业务变化。",
+      "comparison": null,
+      "warnings": [
+        "贡献分解描述金额变化的来源，不能证明促销、流失、市场变化等业务原因。",
+        "2005-01-01 至 2005-02-01 超出数据实际覆盖范围，期间可能不完整。"
+      ],
+      "row_count": 0
+    }
+  ],
+  "parsing_summary": {
+    "total": 8,
+    "evaluated": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "not_applicable": 0,
+    "pass_rate": 1.0
+  },
+  "execution_summary": {
+    "total": 8,
+    "evaluated": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "not_applicable": 0,
+    "pass_rate": 1.0
+  },
+  "duration_seconds": 0.57,
+  "data_summary_unchanged": true,
+  "model_usage": {
+    "calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  "interpretation": "Parsing and gold-plan execution are independent; gold-plan success is not end-to-end model accuracy. No live SQL is executed from a failed model plan."
+}

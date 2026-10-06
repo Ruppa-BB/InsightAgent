@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InsightAgent · 清晰的数据分析</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23ef6075' d='M4 18h5v12H4zM14 10h5v20h-5zM24 2h5v28h-5z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+ <div class="header-inner">
+  <a class="brand" href="/" aria-label="InsightAgent 首页"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 18h5v12H3zM13 10h5v20h-5zM23 2h5v28h-5z"/></svg><span>Insight<span class="brand-light">Agent</span></span></a>
+  <nav aria-label="工作台导航"><a class="quiet-button" href="/data">数据管理</a><span id="mode" class="badge">正在读取配置</span><button id="open-reports" type="button" class="quiet-button">经营报告</button><button id="open-monitor" type="button" class="quiet-button">质量与异常</button><button id="open-history" type="button" class="quiet-button">分析历史</button><button id="new-session" type="button" class="outline-button">＋ 新分析</button><a class="quiet-button" href="/data/metrics">指标口径</a><a class="quiet-button" href="/data/lineage">数据血缘</a></nav>
+ </div>
+</header>
+<main>
+ <div class="dataset-picker"><label for="analysis-version">分析数据版本</label><select id="analysis-version"><option value="baseline-v1">原有零售基线</option></select><a class="quiet-button" href="/data/imports">管理导入批次 ↗</a></div><section id="dashboard" aria-labelledby="dashboard-title">
+  <div class="overview-head"><div><p class="eyebrow">经营总览 / ONLINE RETAIL II</p><h1 id="dashboard-title">先看变化，再问原因。</h1><p class="feedback-note">零售样本 · GBP · 有效订单 · 无成本与毛利数据</p></div>
+   <form id="dashboard-form"><label for="dashboard-month">经营月份</label><input type="month" id="dashboard-month" required><button class="outline-button" id="dashboard-refresh">查看</button></form></div>
+  <p id="dashboard-status" role="status" aria-live="polite">正在读取经营总览…</p>
+  <div id="dashboard-content" hidden><div id="dashboard-cards"></div><div id="dashboard-trend"></div>
+   <div id="dashboard-rankings"></div><section class="dashboard-alerts"><h2>销售变化提醒</h2><p class="feedback-note">环比下降超过20%，或偏离前三月均值超过20%。点击后比较上月并核对贡献，提醒不代表业务原因。</p><div id="dashboard-alerts"></div></section>
+   <ul id="dashboard-warnings" class="warnings"></ul>
+   <details class="data-panel"><summary>总览数据与查询依据</summary><pre id="dashboard-evidence"></pre></details>
+  </div>
+ </section>
+ <section class="intro">
+  <div class="source"><span class="source-dot"></span> Online Retail II <span class="source-divider">/</span> 销售分析工作台</div>
+  <h2>把数据变成<span>清晰的答案。</span></h2>
+  <p class="intro-description">用一句话提问。看见变化，找到贡献，核对每一个数字。</p>
+ </section>
+ <form id="question-form">
+  <label for="question">你想了解什么？</label>
+  <textarea id="question" rows="2" maxlength="2000" required placeholder="为什么 2011 年 2 月销售额比 1 月下降？"></textarea>
+  <div class="form-bottom"><span id="session-label">从一个问题开始</span><button id="submit" type="submit" class="primary-button">开始分析 <span aria-hidden="true">↗</span></button></div>
+ </form>
+ <div class="examples" aria-label="示例问题"><span>试试这些问题</span>
+  <button type="button" data-question="为什么 2011 年 2 月销售额比 1 月下降？">2 月销售额为何下降？</button>
+  <button type="button" data-question="2011 年销售额趋势">2011 年月度趋势</button>
+  <button type="button" data-question="2011 年 2 月订单数比 1 月变化">比较订单数</button>
+  <button type="button" data-question="2011 年 1 月客单价是多少">查看客单价</button>
+  <button type="button" data-question="2011 年销售额同比趋势">销售额同比</button>
+ </div>
+ <div class="trust-row"><span><i>✓</i> 真实数据查询</span><span><i>✓</i> 贡献对账</span><span><i>✓</i> 可保存与导出</span></div>
+ <p id="status" role="status" aria-live="polite"></p>
+ <details id="run-panel" class="data-panel" hidden><summary>运行策略、预算与步骤</summary><p id="run-summary"></p><div id="run-steps" class="table-wrap"></div><p id="run-error" role="status"></p></details>
+ <section id="result" hidden>
+  <div class="result-head"><div><p class="eyebrow">你的分析</p><h2>让变化一目了然</h2></div><div class="exports"><a id="export-json">JSON ↓</a><a id="export-md">Markdown ↓</a></div></div>
+  <p id="intent" class="scope"></p>
+  <section class="drill-panel" aria-label="连续下钻">
+   <h3>继续下钻</h3><p class="feedback-note">沿用当前期间，创建新分析并保留父记录。代码使用数据中的原始值；空白表示取消该筛选。</p>
+   <form id="drill-form" class="monitor-form">
+    <label>当期开始<input type="date" id="drill-start" required></label><label>当期结束（不含）<input type="date" id="drill-end" required></label>
+    <label id="drill-before-start-label">基期开始<input type="date" id="drill-before-start"></label><label id="drill-before-end-label">基期结束（不含）<input type="date" id="drill-before-end"></label>
+    <label>国家<input id="drill-country" maxlength="100" placeholder="United Kingdom"></label>
+    <label>客户代码<input id="drill-customer" maxlength="20" placeholder="CUST_12346"></label>
+    <label>商品代码<input id="drill-product" maxlength="20" placeholder="23166"></label>
+    <label>分析策略<select id="drill-strategy"><option value="auto">自动 / 基础查询</option><option value="sales_decline">销售变化（销售额比较）</option><option value="customer_contribution">客户贡献（销售额比较）</option><option value="product_mix">产品结构（销售额）</option></select></label>
+    <label>指标<select id="drill-metric"><option value="sales_amount">销售额</option><option value="order_count">订单数</option><option value="customer_count">客户数</option><option value="sales_quantity">销量</option><option value="average_order_value">客单价</option><option value="average_selling_price">加权平均售价</option></select></label>
+    <label>趋势分组（趋势分析使用）<select id="drill-dimension"><option value="month">月份</option><option value="country">国家</option><option value="customer">客户</option><option value="product">商品</option></select></label>
+    <button class="outline-button" type="submit">按条件下钻</button>
+   </form><div class="drill-actions"><button id="drill-pairs" type="button" class="outline-button">客户×商品组合贡献</button><button id="drill-reset" type="button" class="quiet-button">取消全部筛选</button><button id="drill-parent" type="button" class="quiet-button" hidden>返回父分析</button></div>
+  </section>
+  <div id="summary"></div>
+  <section class="insight-card"><div class="insight-title"><span class="insight-mark" aria-hidden="true">✦</span><h3>数据告诉我们</h3><span id="usage" class="usage"></span></div><p id="answer" class="answer"></p></section>
+  <ul id="warnings" class="warnings"></ul>
+  <div id="charts"></div>
+  <details class="data-panel"><summary>查看数据与完整对账</summary><div id="table" class="table-wrap"></div></details>
+  <details class="data-panel"><summary>查看分析步骤与查询依据</summary><pre id="trace"></pre></details>
+  <section class="feedback-card" aria-labelledby="feedback-title">
+   <h3 id="feedback-title">这次分析对你有帮助吗？</h3>
+   <p class="feedback-note">你的反馈用于后续评估；修正建议不会自动更改指标、SQL 或分析结论。</p>
+   <form id="feedback-form">
+    <fieldset><legend>评价</legend><label class="rating-option"><input type="radio" name="rating" value="helpful" required> 有帮助</label><label class="rating-option"><input type="radio" name="rating" value="not_helpful" required> 无帮助</label></fieldset>
+    <label for="feedback-reason">反馈原因（选填）</label>
+    <textarea id="feedback-reason" rows="2" maxlength="1000" placeholder="哪些内容有用，或哪里需要改进？"></textarea>
+    <label for="feedback-correction">修正建议（选填）</label>
+    <textarea id="feedback-correction" rows="2" maxlength="2000" placeholder="例如：希望同时展示日均销售额，以便比较不同天数的月份。"></textarea>
+    <div class="feedback-bottom"><span id="feedback-status" role="status" aria-live="polite">尚未提交反馈</span><button id="feedback-submit" class="outline-button" type="submit">保存反馈</button></div>
+   </form>
+  </section>
+  <button id="uk-followup" type="button" class="followup">再看英国 <span aria-hidden="true">→</span></button>
+ </section>
+ <footer><a class="footer-brand" href="/">InsightAgent</a><span>简单提问，认真核对。</span><a href="/docs">API 文档 ↗</a></footer>
+</main>
+<dialog id="history-dialog"><div class="dialog-head"><h2>最近的分析</h2><button id="close-history" type="button" class="quiet-button" aria-label="关闭分析历史">关闭 ×</button></div><nav id="history" aria-label="分析历史"></nav></dialog>
+<dialog id="monitor-dialog">
+ <div class="dialog-head"><h2>数据质量与销售变化检测</h2><button id="close-monitor" type="button" class="quiet-button">关闭检查 ×</button></div>
+ <p class="feedback-note">完整月份才参与检测；阈值提醒不代表业务原因。此处不调用模型。</p>
+ <form id="monitor-form" class="monitor-form">
+  <label>开始月份<input id="monitor-start" type="date" value="2010-01-01" required></label>
+  <label>结束月份（不包含）<input id="monitor-end" type="date" value="2012-01-01" required></label>
+  <label>环比下降阈值（%）<input id="monitor-drop" type="number" value="20" min="0.1" max="100" step="0.1" required></label>
+  <label>移动平均偏离阈值（%）<input id="monitor-deviation" type="number" value="20" min="0.1" max="500" step="0.1" required></label>
+  <label>移动平均窗口（月）<input id="monitor-window" type="number" value="3" min="2" max="12" step="1" required></label>
+  <button id="monitor-submit" class="primary-button" type="submit">检查与检测</button>
+ </form>
+ <p id="monitor-status" role="status" aria-live="polite"></p>
+ <section id="monitor-result" hidden>
+  <p id="monitor-summary"></p><p id="cleaning-summary" class="feedback-note"></p>
+  <ul id="monitor-warnings" class="warnings"></ul>
+  <details class="data-panel"><summary>当前质量规则</summary><div id="quality-rules" class="table-wrap"></div></details>
+  <details class="data-panel"><summary>月份覆盖与空月</summary><div id="quality-months" class="table-wrap"></div></details>
+  <h3>销售变化检测</h3><div id="anomaly-table" class="table-wrap"></div>
+  <p id="monitor-version" class="feedback-note"></p>
+  <a id="monitor-export" class="outline-button">下载检查与检测 JSON</a>
+ </section>
+</dialog>
+<dialog id="reports-dialog">
+ <div class="dialog-head"><h2>月度经营报告</h2><button id="close-reports" type="button" class="quiet-button">关闭报告 ×</button></div>
+ <p class="feedback-note">全量零售月报：按完整月份重新读取数据，保存同一次报告查询的快照。无模型调用；再次生成保留为新报告。</p>
+ <form id="report-form" class="report-form"><label for="report-month">报告月份</label><input id="report-month" type="month" required><button id="report-create" type="submit" class="primary-button">生成并保存报告</button></form>
+ <p id="report-status" role="status" aria-live="polite"></p>
+ <details class="data-panel"><summary>已保存报告（最近30份）</summary><nav id="report-list" aria-label="经营报告列表"></nav></details>
+ <section id="report-content" hidden><h3 id="report-title"></h3><p id="report-meta" class="feedback-note"></p><div class="exports"><a id="report-md">下载 Markdown ↓</a><a id="report-json">数据快照 JSON ↓</a></div><div id="report-body"></div></section>
+</dialog>
+</body></html>

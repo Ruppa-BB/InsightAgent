@@ -15,3 +15,5 @@ data/raw/*
 *.xlsx
 *.xls
 *.zip
+data/artifacts/
+.coverage

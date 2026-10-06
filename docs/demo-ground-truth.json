@@ -1,0 +1,20 @@
+{
+  "source": "本机 PostgreSQL 独立 SQL 核对",
+  "unit": "GBP",
+  "rows": [
+    {
+      "month": "2011-01-01",
+      "sales_amount": "569445.04",
+      "order_count": 987,
+      "customer_count": 741
+    },
+    {
+      "month": "2011-02-01",
+      "sales_amount": "447137.35",
+      "order_count": 998,
+      "customer_count": 758
+    }
+  ],
+  "sales_delta": "-122307.69",
+  "sales_change_ratio": "-0.2147840114649167898626353827"
+}

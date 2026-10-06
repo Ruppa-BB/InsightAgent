@@ -1,0 +1,184 @@
+{
+  "version": "retail-n3-v1",
+  "dataset": "Online Retail II / cleaned completed orders / GBP",
+  "cases": [
+    {
+      "id": "M01",
+      "category": "metrics_n3",
+      "question": "2011年1月销量是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "sales_quantity",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M02",
+      "category": "metrics_n3",
+      "question": "2011年1月客单价是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M03",
+      "category": "metrics_n3",
+      "question": "2011年1月加权平均售价是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_selling_price",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M04",
+      "category": "metrics_n3",
+      "question": "2011年2月客单价比1月变化",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "compare",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2011-02-01",
+            "end_date": "2011-03-01"
+          },
+          "previous_period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {
+        "attribution_dimensions": []
+      }
+    },
+    {
+      "id": "M05",
+      "category": "metrics_n3",
+      "question": "2011年1月销售额同比是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-01-01",
+            "end_date": "2011-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M06",
+      "category": "metrics_n3",
+      "question": "2010年1月销售额同比是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2010-01-01",
+            "end_date": "2010-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M07",
+      "category": "metrics_n3",
+      "question": "2011年12月销售额同比是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "yoy",
+          "metric_code": "sales_amount",
+          "period": {
+            "start_date": "2011-12-01",
+            "end_date": "2012-01-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {}
+    },
+    {
+      "id": "M08",
+      "category": "metrics_n3",
+      "question": "2005年1月客单价是多少",
+      "context": null,
+      "expected": {
+        "status": "ready",
+        "intent": {
+          "action": "trend",
+          "metric_code": "average_order_value",
+          "period": {
+            "start_date": "2005-01-01",
+            "end_date": "2005-02-01"
+          },
+          "previous_period": null,
+          "group_by": "month",
+          "filters": {}
+        }
+      },
+      "checks": {
+        "row_count": 0,
+        "answer_contains": [
+          "没有匹配"
+        ]
+      }
+    }
+  ]
+}

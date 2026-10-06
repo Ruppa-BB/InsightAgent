@@ -11,6 +11,8 @@ import json
 from pathlib import Path
 
 import pandas as pd
+import numpy as np
+from decimal import Decimal, ROUND_HALF_UP
 
 
 def load_source(path: Path) -> pd.DataFrame:
@@ -23,7 +25,7 @@ def load_source(path: Path) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
-def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float]]:
+def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float | str]]:
     df = raw.rename(
         columns={
             "Invoice": "invoice_no",
@@ -45,6 +47,7 @@ def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float
         raise ValueError(f"Missing source columns: {missing}")
 
     raw_count = len(df)
+    df['country']=df['country'].astype('string').str.strip()
     df["invoice_no"] = df["invoice_no"].astype("string").str.strip()
     df["stock_code"] = df["stock_code"].astype("string").str.strip()
     df["invoice_date"] = pd.to_datetime(df["invoice_date"], errors="coerce")
@@ -63,12 +66,17 @@ def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float
         | (df["quantity"] <= 0)
         | (df["unit_price"] < 0)
         | cancelled
+        | df['invoice_no'].eq('') | df['stock_code'].eq('')
+        | df['country'].isna() | df['country'].eq('')
+        | ~np.isfinite(df['quantity']) | ~np.isfinite(df['unit_price']) | ~np.isfinite(df['customer_id'])
+        | (df['quantity'] % 1 != 0) | (df['customer_id'] % 1 != 0)
+        | (df['customer_id'] <= 0)
     )
     cleaned = df.loc[~invalid].copy()
     cleaned["customer_id"] = cleaned["customer_id"].astype("int64")
     cleaned["quantity"] = cleaned["quantity"].astype("int64")
     cleaned["invoice_date"] = cleaned["invoice_date"].dt.strftime("%Y-%m-%d %H:%M:%S")
-    cleaned["sales_amount"] = (cleaned["quantity"] * cleaned["unit_price"]).round(2)
+    cleaned["sales_amount"] = [Decimal(str(price)).quantize(Decimal('0.0001'),rounding=ROUND_HALF_UP).__mul__(int(qty)).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP) for price,qty in zip(cleaned['unit_price'],cleaned['quantity'])]
     cleaned["order_status"] = "completed"
     cleaned["order_date"] = cleaned["invoice_date"].str[:10]
     cleaned["confirmed_date"] = cleaned["order_date"]
@@ -81,7 +89,7 @@ def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float
     cleaned["product_id"] = pd.factorize(cleaned["product_code"])[0] + 1
     cleaned["customer_key"] = pd.factorize(cleaned["customer_code"])[0] + 1
     cleaned["region_id"] = pd.factorize(cleaned["region_code"])[0] + 1
-    stats: dict[str, int | float] = {
+    stats: dict[str, int | float | str] = {
         "raw_rows": int(raw_count),
         "clean_rows": int(len(cleaned)),
         "cancelled_rows": int(cancelled.sum()),
@@ -90,12 +98,12 @@ def clean_source(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, int | float
         "customers": int(cleaned["customer_code"].nunique()),
         "products": int(cleaned["product_code"].nunique()),
         "regions": int(cleaned["region_code"].nunique()),
-        "sales_amount": float(cleaned["sales_amount"].sum()),
+        "sales_amount": str(sum(cleaned["sales_amount"],Decimal(0))),
     }
     return cleaned, stats
 
 
-def export(cleaned: pd.DataFrame, stats: dict[str, int | float], output: Path) -> None:
+def export(cleaned: pd.DataFrame, stats: dict[str, int | float | str], output: Path) -> None:
     output.mkdir(parents=True, exist_ok=True)
     dates = pd.DataFrame({"date_id": sorted(set(cleaned["order_date"]))})
     dates.to_csv(output / "dim_date.csv", index=False)
