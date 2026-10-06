@@ -83,4 +83,4 @@
 
 ## 下一次开始的位置
 
-M1已完成，见 [N10验收](ACCEPTANCE_N10.md)。D1～D4已完成，见 [资产目录验收](DATA_CATALOG_D1_D4.md)。D5～D7也已完成，见 [质量管理验收](QUALITY_MANAGEMENT_D5_D7.md)。D8～D11已完成，见 [导入批次验收](IMPORT_BATCHES_D8_D11.md)。D12～D14已完成，见 [指标治理验收](METRIC_MANAGEMENT_D12_D14.md)。D15～D16已完成，见 [血缘验收](LINEAGE_D15_D16.md)。D17～D18已完成，见 [质量问题闭环](QUALITY_ISSUES_D17_D18.md)。下一任务为D19～D20端到端验收与交付整理。M2制造业扩展暂缓。
+M1已完成，见 [N10验收](ACCEPTANCE_N10.md)。D1～D4已完成，见 [资产目录验收](DATA_CATALOG_D1_D4.md)。D5～D7也已完成，见 [质量管理验收](QUALITY_MANAGEMENT_D5_D7.md)。D8～D11已完成，见 [导入批次验收](IMPORT_BATCHES_D8_D11.md)。D12～D14已完成，见 [指标治理验收](METRIC_MANAGEMENT_D12_D14.md)。D15～D16已完成，见 [血缘验收](LINEAGE_D15_D16.md)。D17～D18已完成，见 [质量问题闭环](QUALITY_ISSUES_D17_D18.md)。D19～D20整体验收和交付整理已完成，见 [整体验收](DATA_MANAGEMENT_ACCEPTANCE_D19.md) 与 [交付手册](DATA_MANAGEMENT_HANDOFF_D20.md)。后续任务需按实习场景确定，不自动扩大范围。M2制造业扩展暂缓。
