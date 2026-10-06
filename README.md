@@ -185,3 +185,7 @@ D12～D14指标版本已完成：入口 `/data/metrics`，支持草稿、发布�
 D15～D16数据血缘已完成：入口 `/data/lineage`，按数据/口径版本追溯源文件、批次、五表与保存的分析/月报，查看上下游影响；缺少登记明确标记。见 [血缘说明与验收](docs/LINEAGE_D15_D16.md)。下一D17～D18质量问题闭环。
 
 D17～D18质量问题闭环已完成：入口 `/data/issues`，自动建单与去重、处理说明、人工豁免、原版本复检和有证据关闭；失败复检不能关闭，人工豁免不解除 Agent 门禁。见 [质量问题说明](docs/QUALITY_ISSUES_D17_D18.md)。D19～D20整体验收与交付整理已完成，见 [整体验收](docs/DATA_MANAGEMENT_ACCEPTANCE_D19.md) 与 [启动演示手册](docs/DATA_MANAGEMENT_HANDOFF_D20.md)。完整回归163项通过（20数据库集成）。
+
+## 求职面试练习
+
+[160题口述题库](docs/interview/InsightAgent_面试题库.md)涵盖项目、Python/FastAPI、SQL、Agent、治理及ERP/SRM方案，附30道必背和7天安排；配套 [勾选自测清单](docs/interview/背诵与自测清单.md) 与 [10道只读SQL练习](docs/interview/SQL_现场练习.sql)。ERP/SRM接入、自学习和企业上线不冒充当前已实现能力。
