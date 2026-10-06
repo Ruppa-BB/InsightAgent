@@ -37,6 +37,8 @@ from backend.app.data_management.lineage import router as lineage_router
 app = FastAPI(title='InsightAgent API', version='0.2.0')
 app.include_router(data_router)
 app.include_router(quality_router)
+from backend.app.data_management.issues import router as issues_router
+app.include_router(issues_router)
 app.include_router(batches_router)
 app.include_router(versions_router)
 app.include_router(metric_router)
@@ -285,3 +287,8 @@ def export_business_report(report_id: UUID, format: str) -> Response:
     if format=='json':
         return JSONResponse(report,headers=headers)
     return Response(report['markdown'],media_type='text/markdown; charset=utf-8',headers=headers)
+
+
+@app.get('/data/issues')
+def issues_home() -> FileResponse:
+    return FileResponse(STATIC / 'issues.html')

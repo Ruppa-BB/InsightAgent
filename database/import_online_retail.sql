@@ -7,18 +7,18 @@ CREATE TEMP TABLE st_region (
     region_id bigint,
     region_code text,
     region_name text
-);
+) ON COMMIT DROP;
 CREATE TEMP TABLE st_customer (
     customer_id_generated bigint,
     customer_code text,
     source_customer_id bigint,
     region_code text
-);
+) ON COMMIT DROP;
 CREATE TEMP TABLE st_product (
     product_id bigint,
     product_code text,
     description text
-);
+) ON COMMIT DROP;
 CREATE TEMP TABLE st_order (
     order_id bigint,
     order_number text,
@@ -27,7 +27,7 @@ CREATE TEMP TABLE st_order (
     order_date date,
     confirmed_date date,
     order_status text
-);
+) ON COMMIT DROP;
 CREATE TEMP TABLE st_detail (
     order_id bigint,
     line_number integer,
@@ -38,7 +38,7 @@ CREATE TEMP TABLE st_detail (
     quantity integer,
     unit_price numeric(18,4),
     sales_amount numeric(24,2)
-);
+) ON COMMIT DROP;
 
 \copy st_region FROM 'data/generated/online_retail_ii/dim_region.csv' WITH (FORMAT csv, HEADER true)
 \copy st_customer FROM 'data/generated/online_retail_ii/dim_customer.csv' WITH (FORMAT csv, HEADER true)

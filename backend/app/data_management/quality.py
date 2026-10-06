@@ -94,7 +94,7 @@ def samples(connection, code: str, limit: int) -> list[dict]:
     _, table, predicate=RULES[code]
     if predicate:
         key='order_detail_id' if table=='fact_sales_detail' else 'order_id'
-        sql=f'SELECT {key} AS record_id FROM public.{table} WHERE {predicate} ORDER BY {key} LIMIT :limit'
+        sql=f'SELECT {key} AS record_id FROM {table} WHERE {predicate} ORDER BY {key} LIMIT :limit'
     elif code=='duplicate_order_lines':
         sql='SELECT order_id,line_number,COUNT(*) AS occurrences FROM fact_sales_detail GROUP BY order_id,line_number HAVING COUNT(*)>1 ORDER BY order_id,line_number LIMIT :limit'
     elif code=='duplicate_order_numbers':
@@ -119,17 +119,26 @@ def samples(connection, code: str, limit: int) -> list[dict]:
 
 def persist(check: dict) -> None:
     with connect() as db:
+        db.execute('BEGIN IMMEDIATE')
         init(db)
+        previous = db.execute('SELECT status,payload FROM dm_quality_checks WHERE id=?', (check['id'],)).fetchone()
+        payload = json.dumps(json_ready(check),ensure_ascii=False)
+        if previous and previous[0] != 'running' and json.loads(previous[1]) != json.loads(payload):
+            raise ServiceError('immutable_check', '完成的检查快照不可覆盖。', 409)
         db.execute('''INSERT INTO dm_quality_checks VALUES (?,?,?,?,?,?)
-        ON CONFLICT(id) DO UPDATE SET status=excluded.status,payload=excluded.payload''',
+        ON CONFLICT(id) DO UPDATE SET version_id=excluded.version_id,status=excluded.status,payload=excluded.payload''',
         (check['id'],check['created_at'],check['dataset_id'],check['version_id'],check['status'],
-         json.dumps(json_ready(check),ensure_ascii=False)))
+         payload))
+        from backend.app.data_management.issues import synchronize
+        synchronize(db)
 
 
 @router.post('/checks')
 def run_check() -> dict:
+    from backend.app.data_management.versions import REQUEST_VERSION, source_info
+    source_info()
     cfg=config()
-    check={'id':str(uuid4()),'created_at':now(),'dataset_id':DATASET_ID,'version_id':VERSION_ID,
+    check={'id':str(uuid4()),'created_at':now(),'dataset_id':DATASET_ID,'version_id':REQUEST_VERSION.get(),
            'status':'running','configuration':cfg}
     persist(check)
     try:

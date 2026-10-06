@@ -3,7 +3,7 @@ Uses configured business data read-only; saved test history uses a temporary fol
 """
 import os
 from decimal import Decimal
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from sqlalchemy import text
@@ -396,3 +396,44 @@ def test_real_lineage_saved_version_and_publication(tmp_path,monkeypatch):
     ids={n['id'] for n in impacts['nodes']}
     assert 'analysis:'+str(analysis['id']) in ids and 'report:'+report['id'] in ids
     assert store.get_business_report(report['id'])==before
+
+
+def test_quality_issue_real_version_recheck(tmp_path, monkeypatch):
+    """Dirty and repair only this test-created import schema; public stays untouched."""
+    from backend.app.data_management import batches, quality, issues, versions
+    monkeypatch.setattr(settings, 'analysis_store', tmp_path/'issues.sqlite3')
+    monkeypatch.setattr(batches, 'RAW', tmp_path/'raw'); batches.RAW.mkdir()
+    monkeypatch.setattr(batches, 'WORK', tmp_path/'work')
+    (batches.RAW/'issue-test.csv').write_text('Invoice,StockCode,Description,Quantity,InvoiceDate,Price,Customer ID,Country\nA,P,Product,1,2011-01-01,2,1,UK\n')
+    batch=batches.register(batches.Register(source_file='issue-test.csv'))['batch']
+    schema=batch['schema_name']
+    token=None
+    try:
+        batches.worker(batch['id'])
+        assert batches.get_batch(batch['id'])['status']=='published', batches.get_batch(batch['id'])
+        token=versions.REQUEST_VERSION.set(batch['id'])
+        with db.engine.begin() as connection:
+            connection.exec_driver_sql(f"INSERT INTO \"{schema}\".dim_date(date_id) VALUES ('2099-01-01') ON CONFLICT DO NOTHING")
+            connection.exec_driver_sql(f'UPDATE "{schema}".fact_sales_order SET confirmed_date=\'2099-01-01\'')
+        check=quality.run_check()
+        rule=next(rule for rule in check['current']['rules'] if rule['rule']=='invalid_date')
+        assert rule['count']==1 and len(rule['samples'])==1
+        issue=issues.listing()['issues'][0]
+        assert issue['version_id']==batch['id'] and issue['rule_code']=='invalid_date'
+        failed=issues.recheck(UUID(issue['id']), issues.Recheck(expected_revision=issue['revision']))
+        assert not failed['candidate']['passed']
+        with pytest.raises(ServiceError):
+            issues.act(UUID(issue['id']), issues.Action(expected_revision=failed['revision'],action='close',note='不能关闭'))
+        with db.engine.begin() as connection:
+            connection.exec_driver_sql(f'UPDATE "{schema}".fact_sales_order SET confirmed_date=order_date')
+        passed=issues.recheck(UUID(issue['id']), issues.Recheck(expected_revision=failed['revision']))
+        assert passed['candidate']['passed']
+        closed=issues.act(UUID(issue['id']),issues.Action(expected_revision=passed['revision'],action='close',note='测试隔离版本修复日期，复检通过'))
+        assert closed['status']=='resolved'
+    finally:
+        if token is not None: versions.REQUEST_VERSION.reset(token)
+        assert schema.startswith('ia_import_')
+        with db.engine.begin() as connection:
+            connection.exec_driver_sql(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE')
+    with db.read_connection() as connection:
+        assert connection.execute(text('SELECT COUNT(*) FROM fact_sales_detail')).scalar_one()==805620
