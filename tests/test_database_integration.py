@@ -420,6 +420,13 @@ def test_quality_issue_real_version_recheck(tmp_path, monkeypatch):
         assert rule['count']==1 and len(rule['samples'])==1
         issue=issues.listing()['issues'][0]
         assert issue['version_id']==batch['id'] and issue['rule_code']=='invalid_date'
+        waived=issues.act(UUID(issue['id']),issues.Action(expected_revision=issue['revision'],action='waive',note='隔离验收：接受风险但不放宽门禁'))
+        from backend.app.agent.schemas import AnalysisIntent
+        intent=AnalysisIntent(action='trend',metric_code='sales_amount',period={'start_date':'2011-01-01','end_date':'2011-02-01'},group_by='month')
+        with pytest.raises(ServiceError) as blocked:
+            service.execute_intent(intent,'豁免后仍阻断',uuid4(),'structured')
+        assert blocked.value.code=='data_quality_failed'
+        issue=issues.act(UUID(issue['id']),issues.Action(expected_revision=waived['revision'],action='reopen',note='继续修复隔离样本'))
         failed=issues.recheck(UUID(issue['id']), issues.Recheck(expected_revision=issue['revision']))
         assert not failed['candidate']['passed']
         with pytest.raises(ServiceError):
@@ -437,3 +444,49 @@ def test_quality_issue_real_version_recheck(tmp_path, monkeypatch):
             connection.exec_driver_sql(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE')
     with db.read_connection() as connection:
         assert connection.execute(text('SELECT COUNT(*) FROM fact_sales_detail')).scalar_one()==805620
+
+
+def test_data_management_end_to_end_evidence(tmp_path, monkeypatch):
+    """One imported source reaches quality, versioned analysis, report and lineage."""
+    from backend.app.data_management import batches, versions, quality, metric_versions, lineage, catalog
+    from backend.app.agent.schemas import AnalysisIntent
+    from backend.app.agent.reports import generate_report, ReportRequest, get_report
+    from backend.app.agent import store
+    monkeypatch.setattr(settings, 'analysis_store', tmp_path/'acceptance.sqlite3')
+    monkeypatch.setattr(batches, 'RAW', tmp_path/'raw'); batches.RAW.mkdir()
+    monkeypatch.setattr(batches, 'WORK', tmp_path/'work')
+    (batches.RAW/'acceptance.csv').write_text('Invoice,StockCode,Description,Quantity,InvoiceDate,Price,Customer ID,Country\nA,P,Product,1,2011-01-01,2,1,UK\nB,P,Product,2,2011-02-28,2,1,UK\n')
+    batch=batches.register(batches.Register(source_file='acceptance.csv'))['batch']
+    schema=batch['schema_name']; token=None
+    try:
+        batches.worker(batch['id'])
+        assert batches.get_batch(batch['id'])['status']=='published'
+        assert batches.register(batches.Register(source_file='acceptance.csv'))['batch']['id']==batch['id']
+        assert len(catalog.scan_registered()['assets'])==5
+        token=versions.REQUEST_VERSION.set(batch['id'])
+        check=quality.run_check()
+        assert not check['current']['blocking'] and check['version_id']==batch['id']
+        intent=AnalysisIntent(action='trend',metric_code='sales_amount',period={'start_date':'2011-01-01','end_date':'2011-03-01'},group_by='month')
+        result=service.execute_intent(intent,'隔离整体验收',uuid4(),'structured')
+        assert [row['value'] for row in result['data']]==[Decimal('2'),Decimal('4')]
+        assert result['dataset_source']['source_sha256']==batch['fingerprint']
+        report=generate_report(ReportRequest(month='2011-02-01'))
+        graph=lineage.trace('report:'+str(report['id']),'upstream')
+        ids={node['id'] for node in graph['nodes']}
+        assert {'source:'+batch['fingerprint'],'batch:'+batch['id'],'dataset:'+batch['id'],
+                'binding:'+batch['id']+':sales_amount:v1'}<=ids
+        assert graph['unknown_count']==0
+        draft=metric_versions.save_draft('sales_amount',metric_versions.Draft(expected_revision=1,name='测试销售额',description='验收停用口径',enabled=False))
+        metric_versions.publish('sales_amount',metric_versions.Publish(expected_revision=draft['revision']))
+        with pytest.raises(ServiceError) as disabled:
+            service.execute_intent(intent,'停用后新分析',uuid4(),'structured')
+        assert disabled.value.code=='metric_disabled'
+        assert store.get(result['id'])['metric_definitions']['sales_amount']['version']==1
+        old=get_report(report['id'])
+        assert old['snapshot_sha256']==report['snapshot_sha256'] and old['markdown']==report['markdown']
+        assert lineage.trace('report:'+str(report['id']),'upstream')==graph
+    finally:
+        if token is not None: versions.REQUEST_VERSION.reset(token)
+        assert schema.startswith('ia_import_')
+        with db.engine.begin() as connection:
+            connection.exec_driver_sql(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE')
